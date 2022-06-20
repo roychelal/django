@@ -52,7 +52,7 @@ def signup(request):
         myuser.save()
         messages.success(request, "Your Account has been created succesfully!! Please check your email to confirm your email address in order to activate your account.")
         
-        # Welcome Email
+        # Welcome Email notification
         subject = "Welcome to GFG- Django Login!!"
         message = "Hello " + myuser.first_name + "!! \n" + "Welcome to GFG!! \nThank you for visiting our website\n. We have also sent you a confirmation email, please confirm your email address. \n\nThanking You\nAnubhav Madhav"        
         from_email = settings.EMAIL_HOST_USER
@@ -115,7 +115,7 @@ def signin(request):
             # messages.success(request, "Logged In Sucessfully!!")
             return render(request, "authentication/index.html",{"fname":fname})
         else:
-            messages.error(request, "Bad Credentials!!")
+            messages.error(request, "Invalid login Credentials!!")
             return redirect('home')
     
     return render(request, "authentication/signin.html")
